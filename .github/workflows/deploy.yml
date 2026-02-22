@@ -4,7 +4,6 @@ on:
   push:
     paths:
       - "**/*.md"
-      - "db.json"
       - "package.json"
       - "_config.yml"
       - "_config.hydrogen.yml"
