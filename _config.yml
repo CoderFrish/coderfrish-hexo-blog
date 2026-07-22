@@ -18,4 +18,8 @@ index_generator:
   per_page: 5
   order_by: -date
 
+markdown:
+  plugins:
+    - name: '@renbaoshuo/markdown-it-katex'
+
 theme: hydrogen
