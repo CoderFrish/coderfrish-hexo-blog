@@ -1,0 +1,5 @@
+allowBuilds:
+  hexo-util: false
+
+minimumReleaseAgeExclude:
+  - hexo-theme-hydrogen@2.2.0
