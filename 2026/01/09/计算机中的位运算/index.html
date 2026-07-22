@@ -1,0 +1,73 @@
+<!DOCTYPE html><html lang="zh" data-theme="light"><head><title>计算机中的位运算 | Frish2021の小站</title><meta charset="utf-8"><meta name="description" content="神人网站"><link rel="stylesheet" href="/styles/hydrogen.css" type="text/css"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="ie=edge"><link rel="preconnect" href="https://cdn.jsdelivr.net/"><script src="/scripts/script.js"></script><script src="https://cdn.jsdelivr.net/npm/iconify-icon@2.0.0/dist/iconify-icon.min.js"></script><link rel="icon" href="/favicon.jpg"><meta name="generator" content="Hexo 8.1.2"></head><body><header><div class="background"><div class="layout"><h1>鼠鼠の小窝</h1><div class="navigation"><ul><li><a class="inactive" href="/">主页</a></li><li><a class="inactive" href="/tags">标签</a></li></ul></div><div class="toolbar"><!-- 等我后面再慢慢写吧--><!-- 页需慢慢写，心急则重写（）--><ul><li><button onclick="switch_theme()"><iconify-icon icon="tabler:sun" id="theme_btn_icon"></iconify-icon></button></li><li><button onclick="toggle_search()"><iconify-icon icon="material-symbols:search-rounded"></iconify-icon></button></li><li id="mobile_menu_btn"><button onclick="open_mobile_nav()"><iconify-icon icon="material-symbols:menu-rounded"></iconify-icon></button></li></ul></div></div></div><div class="mobile-background inactive"><div class="mobile-layout"><ul><li><a class="inactive" href="/">主页</a></li><li><a class="inactive" href="/tags">标签</a></li></ul></div></div></header><main><div class="post-layout"><div class="content"><h1 class="title">计算机中的位运算</h1><div class="meta"><ul><li><iconify-icon icon="uil:calender"></iconify-icon><span>2026-07-22</span></li><li><iconify-icon icon="mingcute:align-left-line"></iconify-icon><span>大约 1.4k 字</span></li></ul></div><div class="markdown"><h3 id="补码-反码">补码/反码</h3>
+<h4 id="反码">反码</h4>
+<p>反码就是每一位二进制数按位取反，即1变0，0变1</p>
+<h4 id="补码">补码</h4>
+<p>在计算机中，负数表示为补码</p>
+<p>即： -5 表示为 1000 0101 其中第一位1为负数符号，反之0为正数</p>
+<h5 id="补码的转化方法">补码的转化方法</h5>
+<p>正数的补码就是他的原码，相反同理</p>
+<p>负数的原码转补码，令反码为x，补码为y，公式为以下<br>
+$$<br>
+y = x + 1<br>
+$$<br>
+其反码就是按位取反，但是与下文的按位取反不是一个概念</p>
+<p>负数的补码转原码，其方法是补码减去1后得到的二进制再按位取反回去</p>
+<h3 id="按位与-或">按位与/或</h3>
+<h4 id="按位与">按位与</h4>
+<p>此前先了解与的真值表<br>
+$$<br>
+\begin{array}{cc|c}<br>
+A&amp;B&amp;O\<br>
+\hline 0&amp;0&amp;0\<br>
+0&amp;1&amp;0\<br>
+1&amp;0&amp;0\<br>
+1&amp;1&amp;1\<br>
+\end{array}<br>
+$$<br>
+所以按位与很简单</p>
+<pre class="line-numbers language-rust" data-language="rust"><code class="language-rust"><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">5</span>
+<span class="token keyword">let</span> and_number <span class="token operator">=</span> <span class="token number">5</span> <span class="token operator">&amp;</span> <span class="token number">3</span> <span class="token comment">// 1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<blockquote>
+<p>解析：5的二进制是0101，而3的二进制为0011，每一位取与，可以得到0001即1的二进制，同理 2 &amp; 4，2的二进制是0010，4的二进制是0100，每一位去与，得到0000，即0的二进制，但是如果是 -5 &amp; 6 怎么办，同理，-5用补码表示为1111 1011，6补码为 0000 0110，按位与的结果就是0000 0010，再补码转为原码为 0000 0010即2的二进制</p>
+</blockquote>
+<h3 id="按位或">按位或</h3>
+<p>转化原理与按位与同理</p>
+<p>真值表如下：<br>
+$$<br>
+\begin{array}{cc|c}<br>
+A&amp;B&amp;O\<br>
+\hline 0&amp;0&amp;0\<br>
+0&amp;1&amp;1\<br>
+1&amp;0&amp;1\<br>
+1&amp;1&amp;1\<br>
+\end{array}<br>
+$$</p>
+<h4 id="按位异或">按位异或</h4>
+<p>转化原理与按位与/或同理</p>
+<p>其真值表：<br>
+$$<br>
+\begin{array}{cc|c}<br>
+A&amp;B&amp;O\<br>
+\hline 0&amp;0&amp;0\<br>
+0&amp;1&amp;1\<br>
+1&amp;0&amp;1\<br>
+1&amp;1&amp;0\<br>
+\end{array}<br>
+$$</p>
+<h4 id="按位取反">按位取反</h4>
+<p>其心算公式为<br>
+$$<br>
+!x = -x - 1<br>
+$$</p>
+<pre class="line-numbers language-rust" data-language="rust"><code class="language-rust"><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> not_number <span class="token operator">=</span> <span class="token operator">!</span>i <span class="token comment">// !4 = -4 - 1 = -5</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<blockquote>
+<p>解析：4是0000 0100，取反为1111 1011，在取反除了符号位为1000 0100，再+1为1000 0101即-5，其实是 原码 -&gt; 补码 -&gt; 取反 -&gt; 补码 -&gt; 原码 的过程，只不过是正数的补码就是原码所以第一步的原码转补码的过程就被省略了。</p>
+</blockquote>
+<h3 id="按位移动">按位移动</h3>
+<pre class="line-numbers language-rust" data-language="rust"><code class="language-rust"><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> move_number <span class="token operator">=</span> i <span class="token operator">&lt;&lt;</span> <span class="token number">1</span> <span class="token comment">// 5 &lt;&lt; 1 = 10</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<blockquote>
+<p>解析：5的二进制补码为0000 0101，后面的1则表示为移动偏移，以上的代码说明的是5按位向左偏移1个单位，即0000 1010，即10的二进制。如果当i为负数怎么办，现在我们取i为-5，向左移动1个单位。先把-5转为二进制即1000 0101，转化为补码为 1111 1011，左移为1111 0110 现在转为原码为 1000 1010 ，就是 -10的二进制。剩下右移同理。</p>
+</blockquote>
+</div><div class="tags"><iconify-icon icon="ic:round-tag"></iconify-icon><ul><li><a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a></li><li><a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a></li></ul></div><div class="copyright"><span><strong>本文作者:</strong> Frish2021</span><span><strong>本文链接:</strong> <a href="http://example.com/2026/01/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E4%BD%8D%E8%BF%90%E7%AE%97/">http://example.com/2026/01/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E4%BD%8D%E8%BF%90%E7%AE%97/</a></span><span><strong>版权声明:</strong> 本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</span></div></div><div class="sidebar"><div class="toc-box"><div class="toc-title">目录</div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A5%E7%A0%81-%E5%8F%8D%E7%A0%81"><span class="toc-text">补码&#x2F;反码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E7%A0%81"><span class="toc-text">反码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%A5%E7%A0%81"><span class="toc-text">补码</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A1%A5%E7%A0%81%E7%9A%84%E8%BD%AC%E5%8C%96%E6%96%B9%E6%B3%95"><span class="toc-text">补码的转化方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%89%E4%BD%8D%E4%B8%8E-%E6%88%96"><span class="toc-text">按位与&#x2F;或</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%89%E4%BD%8D%E4%B8%8E"><span class="toc-text">按位与</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%89%E4%BD%8D%E6%88%96"><span class="toc-text">按位或</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%89%E4%BD%8D%E5%BC%82%E6%88%96"><span class="toc-text">按位异或</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%89%E4%BD%8D%E5%8F%96%E5%8F%8D"><span class="toc-text">按位取反</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%89%E4%BD%8D%E7%A7%BB%E5%8A%A8"><span class="toc-text">按位移动</span></a></li></ol></div></div></div></div></main><footer><div class="layout"><div class="copyright"><span>© 2024 - 2026&nbsp;</span><a target="_blank" rel="noopener" href="https://www.coderfrish.me/">Frish2021</a></div><div class="social"><a class="mail" href="mailto:1573880184@qq.com"><iconify-icon icon="mdi:email-outline"></iconify-icon></a></div><div class="powered"><span>Powered by&nbsp;</span><a target="_blank" rel="noopener" href="https://hexo.io/">Hexo&nbsp;</a><span>|&nbsp;</span><span>Theme&nbsp;</span><a target="_blank" rel="noopener" href="https://github.com/CoderFrish/hexo-theme-hydrogen/">Hydrogen</a></div></div></footer><div class="search inactive"><div class="layout"><div class="search-box"><div class="search-header"><div class="search-input"><iconify-icon icon="material-symbols:search-rounded"></iconify-icon><input placeholder="搜索文章..." autocomplete="off" autofocus id="search"><button onclick="toggle_search()"><iconify-icon icon="material-symbols:close-rounded"></iconify-icon></button></div></div><div class="search-content"></div></div></div></div></body></html>
