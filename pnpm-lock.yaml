@@ -42,8 +42,8 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       hexo-theme-hydrogen:
-        specifier: ^2.2.2
-        version: 2.2.2
+        specifier: ^2.3.0
+        version: 2.3.0
       katex:
         specifier: ^0.18.1
         version: 0.18.1
@@ -440,8 +440,8 @@ packages:
     resolution: {integrity: sha512-u4s0ty9Aew6jV+a9oMrXBwhrRpUQ0U8PWM/88a5aHgDru58VY81mVrxOFxs788NAsWQ8OvsJtF5m7mnXoRnSIA==}
     engines: {node: '>=12.13.0'}
 
-  hexo-theme-hydrogen@2.2.2:
-    resolution: {integrity: sha512-0460vdhoaGMee6SxCtovVK6G+fs5dz05/QZNIMcxbOLhqeA1QrOgtlxU1EapgjlKzTkoGW8KvGNj+7R3cg9mGg==}
+  hexo-theme-hydrogen@2.3.0:
+    resolution: {integrity: sha512-QVA1cJNRbjTfsLnpzs44/Iis3KdWq89GvS3Mj7rSufThM79vtrlES3SaZJUfvcTlCruh2VNTtXMl78Td/cM61A==}
 
   hexo-util@2.7.0:
     resolution: {integrity: sha512-hQM3h34nhDg0bSe/Tg1lnpODvNkz7h2u0+lZGzlKL0Oufp+5KCAEUX9wal7/xC7ax3/cwEn8IuoU75kNpZLpJQ==}
@@ -1354,7 +1354,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  hexo-theme-hydrogen@2.2.2: {}
+  hexo-theme-hydrogen@2.3.0: {}
 
   hexo-util@2.7.0:
     dependencies:
