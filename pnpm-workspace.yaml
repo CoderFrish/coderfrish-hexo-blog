@@ -2,4 +2,4 @@ allowBuilds:
   hexo-util: false
 
 minimumReleaseAgeExclude:
-  - hexo-theme-hydrogen@2.2.0 || 2.2.1
+  - hexo-theme-hydrogen@2.2.2
