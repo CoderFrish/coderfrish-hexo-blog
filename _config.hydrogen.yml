@@ -19,3 +19,11 @@ theme:
 
 search:
   enabled: true
+
+commits:
+  repo:
+    name: CoderFrish/coderfrish-hexo-blog
+    id: R_kgDOP6vGFA
+  category:
+    name: General
+    id: DIC_kwDOP6vGFM4DBxSu
