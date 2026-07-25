@@ -2,25 +2,17 @@
 subtitle:
 
 author:
-  website: https://www.coderfrish.me/
-  name: Frish2021
   avatar: avatar.jpg
-  description: 来自大狗嚼星球的高级生物
   email: 1573880184@qq.com
-
-widget:
-  recent:
-    enabled: true
-  tags:
-    enabled: true
-
-theme:
-  enabled: true
 
 search:
   enabled: true
 
 commits:
+  enabled: true
+  page:
+    about: true
+    post: true
   repo:
     name: CoderFrish/coderfrish-hexo-blog
     id: R_kgDOP6vGFA
